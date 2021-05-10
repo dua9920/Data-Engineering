@@ -1,7 +1,40 @@
-import pandas as pd
+# 2021-04-25
+# 선형 회귀 테스트
+# 보스턴 집값 예측하기
 
-# df = pd.DataFrame({'시간': {'a':2.0, 'b':3.0, 'c':1.2}})
-df = pd.DataFrame({'시간': {'a': '2018-03 14:00', 'b': '2018-03 12:00', 'c': '2018-03 13:00'}})
-print(df)
-df = df.sort_values(by='시간')
-print(df)
+from keras.models import Sequential
+from keras.layers import Dense
+from sklearn.model_selection import train_test_split
+
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+
+seed = 0
+np.random.seed(seed);
+tf.random.set_seed(3);
+
+df = pd.read_csv('ulsan_data.csv')
+
+dataset = df.values
+X = dataset[:,0:5]
+Y = dataset[:,5]
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=seed)
+
+model = Sequential()
+model.add(Dense(35, input_dim=5, activation='relu'))
+model.add(Dense(12, activation='relu'))
+model.add(Dense(6, activation='relu'))
+model.add(Dense(1))
+
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+model.fit(X_train, Y_train, epochs=400, batch_size=10)
+
+# 예측 값과 실제 값의 비교
+Y_prediction = model.predict(X_test).flatten()
+for i in range(10):
+    label = Y_test[i]
+    prediction = Y_prediction[i]
+    print("실제발전량: {:.3f}, 예상발전량: {:.3f}".format(label, prediction))
