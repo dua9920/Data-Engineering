@@ -1,3 +1,5 @@
-data
-*.csv
-*.xlsx
+# data
+# *.csv
+# *.xlsx
+기초/Machine Learning/data/건강검진정보(2017).csv
+Flight Delay and Cancellations/data/flights.csv
