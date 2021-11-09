@@ -1,4 +1,9 @@
 # DataEngineering
-![image](https://user-images.githubusercontent.com/50233862/140955316-d9510c4c-6233-4f78-9c66-5c594c57699e.png)
+<div align='center'>
+![image](https://github.com/dua9920/Data-Engineering/blob/main/data-engineering.jpg)
+  
+</div>
 
-데이터공학
+- 4학년 1학기 데이터 공학
+- Flight Delay and Cancellation 데이터 분석
+- [데이콘] 기상에 따른 전력 발전량 추세 분석
